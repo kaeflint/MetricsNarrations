@@ -24,7 +24,7 @@ from transformers.models.t5.modeling_t5 import (T5Attention, T5Block,
                                                 T5PreTrainedModel, T5Stack)
 from transformers.utils import logging
 
-from .model_utils import RelativeGlobalAttention
+from model_utils import RelativeGlobalAttention
 
 
 class GatedControl(nn.Module):

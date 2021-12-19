@@ -2826,7 +2826,7 @@
         {
             "task_name": "Employee Promotion Prediction",
             "id": 92,
-            "narration": "'The model performs relatively well on this classification task with high scores for the accuracy and recall metrics. It has an accuracy score of 91.84% and  recall (84.71%) with a moderate precision score of 65.18% and 85.16% indicate a somewhat strong ability to disinguish between the test examples under the two class labels.'",
+            "narration": "'The model performs relatively well on this classification task with high scores for the accuracy and recall metrics. It has an accuracy score of 91.84% and  recall (84.71%) with a moderate precision score of 65.18% and 85.16% indicate a somewhat strong ability to disinguish between the test examples under the two class labels.",
             "metrics_values": "\"{\\\"Recall\\\":{\\\"Model A\\\":84.71},\\\"Accuracy\\\":{\\\"Model A\\\":91.84},\\\"Precision\\\":{\\\"Model A\\\":65.18}}\"",
             "deleted": false,
             "date_submitted": "14/10/2021",
@@ -2846,7 +2846,7 @@
         {
             "task_name": "Employee Promotion Prediction",
             "id": 92,
-            "narration": "'The model performs relatively well on this classification task with high scores for the accuracy and recall metrics. It has an accuracy score of 91.84% and  recall (84.71%) with a moderate precision score of 65.18% and 85.16% indicate a somewhat strong ability to disinguish between the test examples under the two class labels.'",
+            "narration": "'The model performs relatively well on this classification task with high scores for the accuracy and recall metrics. It has an accuracy score of 91.84% and  recall (84.71%) with a moderate precision score of 65.18% and 85.16% indicate quite a strong ability to tell apart the unseen cases under the two class labels.",
             "metrics_values": "\"{\\\"Recall\\\":{\\\"Model A\\\":84.71},\\\"Accuracy\\\":{\\\"Model A\\\":91.84},\\\"F1-score\\\":{\\\"Model A\\\":86.46}}\"",
             "deleted": false,
             "date_submitted": "14/10/2021",
@@ -3924,7 +3924,7 @@
         {
             "task_name": "Movie Theatre Attendance",
             "id": 129,
-            "narration": "The dataset used to train the model was balanced between classes C1 and C2. The predictability of the model is high as shown by the scores achieved across the metrics: recall, accuracy, AUC, and precision. From these scores, it can be ruled that the chance/likelihood of misclassification is quite small which is impressive but not surprising given the distribution of the dataset across the classes labels.  ",
+            "narration": "The dataset used to train the model was balanced between classes C1 and C2. The predictability of the model is high as shown by the scores achieved across the metrics: recall, accuracy, AUC, and precision. From these scores, it can be ruled that the chance/likelihood of misclassification is quite small which is impressive but not surprising given the distribution of the dataset across the class labels.  ",
             "metrics_values": "\"{\\\"Accuracy\\\":{\\\"Model A\\\":88.33},\\\"Recall\\\":{\\\"Model A\\\":87.97},\\\"AUC\\\":{\\\"Model A\\\":95.96},\\\"Precision\\\":{\\\"Model A\\\":88.58}}\"",
             "deleted": false,
             "date_submitted": "19/10/2021",
@@ -5382,7 +5382,7 @@
         {
             "task_name": "Job Change of Data Scientists",
             "id": 100,
-            "narration": "This model did not perform well, with very low F1-score (43.36%) and precision (35.29%). The accuracy (77.0%) is not significantly better than the alternative model that constantly assigns the majority class label C1 to any given test case. Considering the disproportionate nature of the dataset, a high accuracy of 77.05% is less impressive. A recall of 56.22% and precision of 35.29% imply that the model's prediction decisions shouldn't be taken on the face value (i.e. the confidence-level of the labels assigned is very low).",
+            "narration": "This model did not perform well, with very low F1-score (43.36%) and precision (35.29%). The accuracy (77.0%) is not significantly better than the alternative model that constantly assigns the majority class label C1 to any given test case. Considering the disproportionate nature of the dataset, a high accuracy of 77.05% is less impressive. A recall of 56.22% and precision of 35.29% imply that the model's prediction decisions shouldn't be taken on the face value (i.e. the confidence level of the labels assigned is very low).",
             "metrics_values": "\"{\\\"Precision\\\":{\\\"Model A\\\":35.29},\\\"Accuracy\\\":{\\\"Model A\\\":77.0},\\\"Recall\\\":{\\\"Model A\\\":56.22},\\\"F1-score\\\":{\\\"Model A\\\":43.36}}\"",
             "deleted": false,
             "date_submitted": "15/10/2021",
@@ -5722,7 +5722,7 @@
         {
             "task_name": "Sentiment Classification",
             "id": 129,
-            "narration": "The model's classification prowess on this machine learning task (where the test samples are assigned  either class label C1 or class label C2) is: Accuracy (81.67%), Recall (81.92%), and Precision (82.47%).  This model has a moderate classification performance which implies that it is faily or relatively effective at correctly separating apart the examples belonging to the two different class labels judging by these scores. Furthermore, the F2-score is about 81.66 as computed based on the recall and precision  scores shows that it has a fairly low false positive rate.",
+            "narration": "The model's classification prowess on this machine learning task (where the test samples are assigned  either class label C1 or class label C2) is: Accuracy (81.67%), Recall (81.92%), and Precision (82.47%).  This classifier has a moderate classification performance which implies that it is fairly or relatively effective at correctly separating apart the examples belonging to the two different class labels judging by these scores. Furthermore, the F2-score is about 81.66 as computed based on the recall and precision  scores shows that it has a fairly low false positive rate.",
             "metrics_values": "\"{\\\"F2-score\\\":{\\\"Model A\\\":81.66},\\\"Precision\\\":{\\\"Model A\\\":82.47},\\\"Recall\\\":{\\\"Model A\\\":81.92},\\\"Accuracy\\\":{\\\"Model A\\\":81.67}}\"",
             "deleted": false,
             "date_submitted": "19/10/2021",
@@ -5982,7 +5982,7 @@
         {
             "task_name": "Sentiment Classification",
             "id": 129,
-            "narration": "Evaluating the classifier's performance on this binary classification task produced the scores 83.56% for the predictive accuracy, 81.88% as the precision score with the associated sensitivity and specificity scores equal to 72.73% and 89.36%, respectively. The prediction capability of the model can be summarized as fairly accurate with a lower chance of misclassification. Besides looking at Specificity and precision scores, the confidence in predictions related to the two classes labels is shown to be quite high.",
+            "narration": "Evaluating the classifier's performance on this binary classification task produced the scores 83.56% for the predictive accuracy, 81.88% as the precision score with the associated sensitivity and specificity scores equal to 72.73% and 89.36%, respectively. The prediction capability of the model can be summarized as fairly accurate with a lower chance of misclassification. Besides looking at Specificity and precision scores, the confidence in predictions related to the two class labels is shown to be quite high.",
             "metrics_values": "\"{\\\"Sensitivity\\\":{\\\"Model A\\\":72.73},\\\"Precision\\\":{\\\"Model A\\\":81.88},\\\"Specificity\\\":{\\\"Model A\\\":89.36},\\\"Accuracy\\\":{\\\"Model A\\\":83.56}}\"",
             "deleted": false,
             "date_submitted": "19/10/2021",
@@ -6122,7 +6122,7 @@
         {
             "task_name": "Health Care Services Satisfaction Prediction",
             "id": 195,
-            "narration": "The model's classification performance achieved on this binary classification problem where the test instances are classified as either C1 or C2 is: 63.97% (accuracy), 60.8% ( F1-score ), and 60.32% (precision). This model has a moderate classification performance which implies that it is faily or relatively effective at correctly partitioning between the examples belonging to the different class labels. Furthermore from the precision and F1-score, we can conclude that this model will likely misclassify some test samples drawn randomly from any of the two classes. ",
+            "narration": "The model's classification performance achieved on this binary classification problem where the test instances are classified as either C1 or C2 is: 63.97% (accuracy), 60.8% ( F1-score ), and 60.32% (precision). This model has a moderate classification performance which implies that it is fairly effective at correctly partitioning between the examples belonging to the different class labels. Furthermore from the precision and F1-score, we can conclude that this model will likely misclassify some test samples drawn randomly from any of the two classes. ",
             "metrics_values": "\"{\\\"Precision\\\":{\\\"Model A\\\":60.32},\\\"Accuracy\\\":{\\\"Model A\\\":63.97},\\\"F1-score\\\":{\\\"Model A\\\":60.8}}\"",
             "deleted": false,
             "date_submitted": "14/11/2021",
@@ -7202,7 +7202,7 @@
         {
             "task_name": "Food Type Classification",
             "id": 129,
-            "narration": "The evaluation scores achieved by the clasifier on this classification task or problem where the test instances are a label from the set of classes C1, C3 and C2 can be summarized as follows: the recall score is equal to 85.97%, the prediction accuracy is equal to 85.89%, and the precision score is 75.18. A balance between the precision and recall scores is the  F2-score which is equal to 82.92%. These scores indicate that the likelihood of misclassifying test samples is small which is impressive but not surprising given the distribution of the dataset across the classes labels. In conclusion, this model shows a high level of effectiveness at correctly predicting the true label for several test examples.",
+            "narration": "The evaluation scores achieved by the clasifier on this classification task or problem where the test instances are a label from the set of classes C1, C3 and C2 can be summarized as follows: the recall score is equal to 85.97%, the prediction accuracy is equal to 85.89%, and the precision score is 75.18. A balance between the precision and recall scores is the  F2-score which is equal to 82.92%. These scores indicate that the likelihood of misclassifying test samples is small which is impressive but not surprising given the distribution of the dataset across the classes or labels. In conclusion, this model shows a high level of effectiveness at correctly predicting the true label for several test examples.",
             "metrics_values": "\"{\\\"F2-score\\\":{\\\"Model A\\\":82.92},\\\"Precision\\\":{\\\"Model A\\\":75.18},\\\"Recall\\\":{\\\"Model A\\\":85.97},\\\"Accuracy\\\":{\\\"Model A\\\":85.89}}\"",
             "deleted": false,
             "date_submitted": "19/10/2021",
@@ -8382,7 +8382,7 @@
         {
             "task_name": "Pima Classification",
             "id": 63,
-            "narration": "The prediction performance of the classifier on this ML problem (where a given test instance is labeled as either C1 or C2) is: accuracy (85.68%), precision (82.19%) and AUC (89.43%). With such high precision and accuracy scores, we can be sure to trust that this model will be effective in terms of its prediction power for several test examples/samples under the different class labels. This implies that the likelihood of misclassifying test samples is quite small which is impressive but not surprising given the distribution in the dataset across the classes labels.",
+            "narration": "The prediction performance of the classifier on this ML problem (where a given test instance is labeled as either C1 or C2) is: accuracy (85.68%), precision (82.19%) and AUC (89.43%). With such high precision and accuracy scores, we can be sure to trust that this model will be effective in terms of its prediction power for several test examples/samples under the different class labels. This implies that the likelihood of misclassifying test samples is quite small which is impressive but not surprising given the distribution in the dataset across the classes or labels.",
             "metrics_values": "\"{\\\"AUC\\\":{\\\"Model A\\\":89.43},\\\"Accuracy\\\":{\\\"Model A\\\":85.68},\\\"Precision\\\":{\\\"Model A\\\":82.19}}\"",
             "deleted": false,
             "date_submitted": "11/10/2021",

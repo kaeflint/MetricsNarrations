@@ -8,9 +8,16 @@ import nltk
 import torch
 from transformers import BartTokenizer, T5Tokenizer
 from torch.nn import functional as F
-from .data_utils import getClassLabels
+#from .data_utils import getClassLabels
 
 nn = torch.nn
+def getClassLabels(nb_classes):
+    # The class label token is represented as #C{chr(i+97).upper()}
+    classes = []
+    for i in range(nb_classes):
+        cl = '#C'+chr(i+97).upper()
+        classes.append(cl)
+    return classes
 classes_tokens = getClassLabels(7)
 
 

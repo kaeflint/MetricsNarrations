@@ -13,7 +13,7 @@ from transformers.models.bart.modeling_bart import (
     BartLearnedPositionalEmbedding, BartModel, BaseModelOutput,
     Seq2SeqLMOutput, Seq2SeqModelOutput, shift_tokens_right)
 
-from .model_utils import RelativeGlobalAttention
+from model_utils import RelativeGlobalAttention
 from torch.nn import functional as F
 
 class GatedControl(nn.Module):

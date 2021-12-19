@@ -3302,7 +3302,7 @@
     {
         "task_name": "Pima Classification",
         "id": 129,
-        "narration": "The ability of the machine learning model or classifier rightly label test samples as either C1 or C2 can be summarized as follows: for the prediction accuracy, the model scored 73.96% with the sensitivity equal to 48.57%; specificity score of 88.52%; precision score of 70.83% and an F1-score of 57.62%. This model has a high specificity but a low sensitivity which indicates that the model was more effective at predicting the class C1 than C2. An F1-score of 57.62% is an indicator of an overall poor model which performs especially poorly on the minority class. In summary, the model struggles to rightly identify test cases belonging to class C2 than C1.",
+        "narration": "The ability of the machine learning model or classifier to label test samples as either C1 or C2 can be summarized as follows: for the prediction accuracy, the model scored 73.96% with the sensitivity equal to 48.57%; specificity score of 88.52%; precision score of 70.83% and an F1-score of 57.62%. This model has a high specificity but a low sensitivity which indicates that the model was more effective at predicting the class C1 than C2. An F1-score of 57.62% is an indicator of an overall poor model which performs especially poorly on the minority class. In summary, the model struggles to rightly identify test cases belonging to class C2 than C1.",
         "metrics_values": "\"{\\\"F1-score\\\":{\\\"Model A\\\":57.62},\\\"Precision\\\":{\\\"Model A\\\":70.83},\\\"Specificity\\\":{\\\"Model A\\\":88.52},\\\"Sensitivity\\\":{\\\"Model A\\\":48.57},\\\"Accuracy\\\":{\\\"Model A\\\":73.96}}\"",
         "deleted": false,
         "date_submitted": "19/10/2021",

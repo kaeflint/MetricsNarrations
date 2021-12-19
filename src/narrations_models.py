@@ -5,9 +5,9 @@ from transformers import (AdamW, BartForConditionalGeneration,
                           T5ForConditionalGeneration,T5Config,BartConfig,
                           get_linear_schedule_with_warmup)
 
-from .modeling_bart import DataNarrationBart
-from .modeling_t5 import DataNarration
-from .SelfAttentionBasedTableEncoder import (CollapsedMetricsTableEncoder,
+from modeling_bart import DataNarrationBart
+from modeling_t5 import DataNarration
+from SelfAttentionBasedTableEncoder import (CollapsedMetricsTableEncoder,
                                             CollapsedMetricsTableEncoderBart)
 
 device = torch.device("cuda")
