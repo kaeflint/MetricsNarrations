@@ -1573,7 +1573,7 @@
     {
         "task_name": "Advertisement Prediction",
         "id": 117,
-        "narration": "The algorithm was trained to label cases as either C1 or C2 and the dataset used for training is shown to have identical distribution across the two classes. As shown, the algorithm demonstrates a very good labeling ability given that it scored: (a) Accuracy is 81.66% (b) Specificity is 85.39% (c) Sensitivity is 78.05% (d) Precision is 84.71% (e) F1-score is 81.24%. Several test cases can be correctly labeled by the algorithm with the misclassification error rate equal to <acc_diff>%",
+        "narration": "The algorithm was trained to label cases as either C1 or C2 and the dataset used for training is shown to have identical distribution across the two classes. As shown, the algorithm demonstrates a very good labeling ability given that it scored: (a) Accuracy is 81.66% (b) Specificity is 85.39% (c) Sensitivity is 78.05% (d) Precision is 84.71% (e) F1-score is 81.24%. Several test cases can be correctly labeled by the algorithm with the misclassification error rate equal to <acc_diff>%.",
         "metrics_values": "\"{\\\"F1-score\\\":{\\\"Model A\\\":81.24},\\\"Sensitivity\\\":{\\\"Model A\\\":78.05},\\\"Precision\\\":{\\\"Model A\\\":84.71},\\\"Specificity\\\":{\\\"Model A\\\":85.39},\\\"Accuracy\\\":{\\\"Model A\\\":81.66}}\"",
         "deleted": false,
         "date_submitted": "18/10/2021",
