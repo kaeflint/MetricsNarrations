@@ -26,6 +26,7 @@ parser.add_argument('-ga', '--gradient_accumulation_steps',
                     type=int, default=10)
 parser.add_argument('-only_eval', '--only_eval', action="store_true")
 parser.add_argument('-output_path', '--output_path', type=str, required=True)
+parser.add_argument('-use_raw','--use_raw', action="store_true")
 
 
 args = parser.parse_args()
@@ -47,7 +48,7 @@ print(f'Learning rate is {learning_rate}')
 
 mle_only = True
 accumulation_steps = args.gradient_accumulation_steps
-processed = pk.load(open('dataset/train_dataset.dat', 'rb'))
+processed = pk.load(open('dataset/train_dataset_full.dat', 'rb'))
 print(len(processed))
 
 test_data = json.load(open('dataset/test set.json'))
@@ -67,9 +68,9 @@ for pc in test_data:
 
 dataset = RDFDataSetForTableStructured(tokenizer_,  processed, args.modelbase,max_preamble_len=160,
                                        max_len_trg=180, max_rate_toks=8,
-                                       lower_narrations=True, process_target=True)
+                                       lower_narrations=True, process_target=True,use_raw=args.use_raw)
 test_dataset = RDFDataSetForTableStructured(tokenizer_, test_sample, args.modelbase,
-                                            max_preamble_len=150, max_rate_toks=1, max_len_trg=180)
+                                            max_preamble_len=150, max_rate_toks=1, max_len_trg=180,use_raw=args.use_raw)
 # Split into training and validation sets
 train_size = int(len(dataset))
 val_size = int(len(test_dataset))

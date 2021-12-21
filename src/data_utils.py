@@ -254,6 +254,13 @@ def composePreambleAndInputs(data, identical_metrics={},
     return output
 processInputTableAndNarrations = composePreambleAndInputs
 
+def cleanRatingPreamble(preamble):
+    # This function will replace the VALUE_LOW, VALUE_HIGH and VALUE_MODERATE mentions in the preamble a common token VALUE
+    preamble_dict = {'VALUE_LOW':'VALUE','VALUE_HIGH':'VALUE','VALUE_MODERATE':'VALUE'}
+    preamble = [functools.reduce(lambda a, kv: a.replace(*kv),
+                preamble_dict.items(),
+                                 re.sub('\s+', ' ', ss.strip().replace('\n', ' '))) for ss in [preamble]][0]
+    return preamble
 
 class RDFDataSetForTableStructured(torch.utils.data.Dataset):
     def __init__(self, tokenizer, 
@@ -267,7 +274,8 @@ class RDFDataSetForTableStructured(torch.utils.data.Dataset):
                  max_rate_toks=8,
                  nb_classes=8,
                  lower_narrations=False,
-                 process_target=False):
+                 process_target=False,
+                 use_raw=False):
         super().__init__()
         self.modelbase = modelbase
         self.nb_metrics = nb_metrics
@@ -281,6 +289,7 @@ class RDFDataSetForTableStructured(torch.utils.data.Dataset):
         self.nb_classes = nb_classes
         self.lower_narrations = lower_narrations
         self.process_target = process_target
+        self.use_raw = use_raw
         self.preamble_tokenizer = lambda x: self.tokenizer(x, return_attention_mask=True,
                                                            max_length=self.max_preamble_len,
                                                            padding='max_length',
@@ -328,9 +337,13 @@ class RDFDataSetForTableStructured(torch.utils.data.Dataset):
         data_di = data_row['dataset_attribute']
         data_clb = data_row['classes']
         data_target = data_row['narration']
-        data_preamble = data_row['preamble']
+        if not self.use_raw:
+            data_preamble = data_row['preamble']
+            data_rates = [r.strip() for r in data_row['rates']]
+        else:
+            data_preamble = cleanRatingPreamble(data_row['preamble'])
+            data_rates = ['VALUE']*len([r.strip() for r in data_row['rates']])
         data_values = [v.strip() for v in data_row['values']]
-        data_rates = [r.strip() for r in data_row['rates']]
         data_metrics = [m.strip() for m in data_row['metrics']]
         target_encoding = self.tokenizer(data_target, max_length=self.max_len_trg,
                                          padding='max_length',
