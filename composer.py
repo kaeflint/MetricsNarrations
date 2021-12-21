@@ -65,6 +65,10 @@ for pc in test_data:
         pc, identical_metrics=identicals))
 
 
+if args.use_raw:
+    print('Using Raw data without ratings')
+else:
+    print('Using the Rating Information')
 
 dataset = RDFDataSetForTableStructured(tokenizer_,  processed, args.modelbase,max_preamble_len=160,
                                        max_len_trg=180, max_rate_toks=8,
