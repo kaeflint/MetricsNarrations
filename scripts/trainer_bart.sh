@@ -6,9 +6,16 @@ conda activate annotation
 PYTHONPATH=$PYTHONPATH:./
 
 modeltype=earlyfusion
-# t5-large
-#t5-small t5-base
-for modelbase in facebook/bart-large facebook/bart-base 
+#earlyfusion
+#baseline
+#facebook/bart-base 
+for modelbase in facebook/bart-base facebook/bart-large
 do
-python pn_bartmodel.py -ws 800 -bs 8 -mt $modeltype -mb $modelbase -output_path outputs
+python pn_bartmodel.py -only_eval -epochs 10 -ws 0 -wr 0.21 -bs 8 -mt $modeltype -mb $modelbase -output_path outputs
 done
+#_full_rated
+#modelbase=facebook/bart-large
+#for wr in 1e-1 25e-2 30e-2 21e-2 19e-2
+#do
+#python pn_bartmodel.py -epochs 10 -ws 0 -wr $wr -bs 8 -mt $modeltype -mb $modelbase -output_path outputs_full_rated$mr
+#done

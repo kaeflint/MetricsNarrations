@@ -12,15 +12,30 @@ from src.model_utils import setupTokenizer
 from src.narrations_models import BartNarrationModel
 from src.losses import computeLoss
 
+
+
 model_generator = BartNarrationModel(
     vocab_size=len(tokenizer_), model_type=args.modeltype,
     modelbase=args.modelbase)
 
 # compile the model setting up the optimizer and the learning rate schedule
 total_steps = len(train_dataloader) * epochs
+print(f'Ws: {warmup_steps}')
+if warmup_steps ==0:
+    warmup_steps =  int(total_steps*float(args.warmup_ratio))
+    print(f'Ws {warmup_steps}')
 model_generator.compile(
-    lr=learning_rate, warmup_steps=warmup_steps, total_steps=total_steps, )
+    lr=learning_rate, warmup_steps=warmup_steps, total_steps=total_steps,)
 
+
+hh= args.modelbase.split('/')[1]
+output_path = 'TrainedNarrators/P-NarrationsModels/' + \
+    args.modeltype+args.output_path+'/'+hh+'/'#+'/wr'+str(args.warmup_ratio)+'/'
+print(f'Results will be saved @: {output_path}')
+try:
+    os.makedirs(output_path)
+except:
+    pass
 
 def baselineTraining(step, batch):
     preamble_tokens = batch['preamble_tokens'].to(device)
@@ -157,7 +172,7 @@ def trainNarrator(train_dataset_loader, epochs):
         format_time(time.time()-total_t0)))
 
 
-def generateAndEvaluate(seed=43):
+def generateAndEvaluateYY(seed=43):
     model_generator.generator.eval()
     if model_generator.aux_encoder is not None:
         model_generator.aux_encoder.eval()
@@ -228,13 +243,13 @@ def generateAndEvaluate(seed=43):
     return generated_output_dict
 
 
-hh= args.modelbase.split('/')[1]
-output_path = 'TrainedNarrators/P-NarrationsModels/' + \
-    args.modeltype+args.output_path+'/'+hh+'/'
-try:
-    os.makedirs(output_path)
-except:
-    pass
+
+
+
+
+
+
+
 
 
 # Save the configuration_arguments
@@ -246,14 +261,16 @@ if not args.only_eval:
     model_generator.saveModel(model_path=output_path+'trained_model.pt')
 
     # Perform evaluations
-    results = generateAndEvaluate(seed=args.seed)
+    results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed)
 
 else:
     print('-- Evaluating Performance --')
     print('-- Please make sure to restore model checkpoint before this step')
+    print(output_path+'trained_model.pt')
     if os.path.exists(output_path+'trained_model.pt'):
         model_generator.loadModel(model_path=output_path+'trained_model.pt')
-        results = generateAndEvaluate(seed=args.seed)
+        results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed)
+        #results = generateAndEvaluate(seed=args.seed)
     else:
         print('-- Model files not found')
 if len(results) > 0:

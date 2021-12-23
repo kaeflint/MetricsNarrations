@@ -1,0 +1,22 @@
+[{
+    "id": 17,
+    "task_name": "Bike Sharing Demand",
+    "narration": "Following the training of the classifier on the given machine learning problem, the classifier is shown to be effective at correctly predicting the class labels for the majority of the test instances. This is shown by the very high scores achieved across the Accuracy, Recall, AUC, and Precision evaluation metrics. With an AUC of 97.91, the model is nearly perfect in regards to predictions across the majority of the new or unseen cases. The model has a very low error rate as indicated by the accuracy.",
+    "narrative_question": "<li> In not less than two sentences summarize the overall performance of the Model A as shown by the values of the evaluation metrics: Accuracy, Recall, AUC and Precision. </li> <li> In a sentence, summarize the implication of the model achieving AUC of 97.91. </li> <li> What is the implication of Model A achieving a Accuracy of 92.085? </li>",
+    "narrative_status": 1,
+    "date_approved": "01-01-1970",
+    "is_paid": 2,
+    "user_ip": "10.212.134.10",
+    "nb_models": 1,
+    "model_name": "Model-4",
+    "narrator": 45,
+    "metrics_values": "\"{\\\"Accuracy\\\":{\\\"Model A\\\":92.085},\\\"Recall\\\":{\\\"Model A\\\":94.042},\\\"AUC\\\":{\\\"Model A\\\":97.91},\\\"Precision\\\":{\\\"Model A\\\":89.708}}\"",
+    "deleted": false,
+    "date_submitted": "23/09/2021",
+    "dataset_info": "<p> Class Labels: <b>C1</b> and <b>C2</b></p>The dataset is balanced with 50.0% of the data belonging to class C1 and 50.0% belonging to class C2",
+    "redeem_code": "HEF5C-@EA31-NWMF8-17-APC",
+    "is_dataset_balanced": 2,
+    "imetric_score_rate": "{\"Accuracy\":5,\"Precision\":5,\"AUC\":5,\"Recall\":5}"
+},
+
+]
