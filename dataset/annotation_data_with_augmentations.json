@@ -7262,7 +7262,7 @@
         {
             "task_name": "Food Type Classification",
             "id": 129,
-            "narration": "On the multi-class ML problem under consideration, the classifier is shown to achieve high evaluation scores across all the metrics employed for to assess the classification performance. For the accuracy, it scored 87.36%, for the precision score it scored 83.78 and the recall score is also equal to 86.85%. These identical scores suggest that the model is very well balanced amongst the three classes (C1, C2 and C3). In essence, we can confidently conclude that this model will be effective at assigning the true label for several test cases/samples with only few instances misclassified.",
+            "narration": "On the multi-class ML problem under consideration, the classifier is shown to achieve high evaluation scores across all the metrics employed to assess the classification performance. For the accuracy, it scored 87.36%; for the precision score it scored 83.78 and the recall score is also equal to 86.85%. These identical scores suggest that the model is very well balanced among the three classes (C1, C2, and C3). In essence, we can confidently conclude that this model will be effective at assigning the true label for several test cases/samples with only a few instances misclassified.",
             "metrics_values": "\"{\\\"Precision\\\":{\\\"Model A\\\":83.78},\\\"Recall\\\":{\\\"Model A\\\":86.85},\\\"Accuracy\\\":{\\\"Model A\\\":87.36}}\"",
             "deleted": false,
             "date_submitted": "19/10/2021",
@@ -7322,7 +7322,7 @@
         {
             "task_name": "Food Type Classification",
             "id": 129,
-            "narration": "With respect to the modelling objective of this multi-class classification task, the performance of the classifier is analyzed based on the following evaluation metrics: Accuracy, Recall, and Precision. For the accuracy, it scored 83.08%, for the precision it achieved 69.6% with the recall score equal to 82.75% and F1-score equal to 74.24%. This model is shown to have a moderately high classification performance in terms of correctly classifying test samples from each of the three-class labels under consideration. In other words, we can assert that this model will be somewhat effective at correctly recognizing the examples associated with each class or label.",
+            "narration": "With respect to the modelling objective of this multi-class classification task, the performance of the classifier is analyzed based on the following evaluation metrics: accuracy, recall, and precision. For the accuracy, it scored 83.08%, for the precision it achieved 69.6% with the recall score equal to 82.75% and F1-score equal to 74.24%. This model is shown to have a moderately high classification performance in terms of correctly classifying test samples from each of the three-class labels under consideration. In other words, we can assert that this model will be somewhat effective at correctly recognizing the examples associated with each class or label.",
             "metrics_values": "\"{\\\"F1-score\\\":{\\\"Model A\\\":74.24},\\\"Precision\\\":{\\\"Model A\\\":69.60},\\\"Recall\\\":{\\\"Model A\\\":82.75},\\\"Accuracy\\\":{\\\"Model A\\\":83.08}}\"",
             "deleted": false,
             "date_submitted": "19/10/2021",
