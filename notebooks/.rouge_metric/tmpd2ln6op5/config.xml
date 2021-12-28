@@ -1,0 +1,63 @@
+<ROUGE-EVAL version="1.5.5">
+<EVAL ID="1">
+    <MODEL-ROOT>/tmp/tmplbmiomzmexg/</MODEL-ROOT>
+    <PEER-ROOT>/tmp/tmplbmiomzmexg/</PEER-ROOT>
+    <INPUT-FORMAT TYPE="SPL">
+    </INPUT-FORMAT>
+    <PEERS>
+        <P ID="A">gen.txt</P>
+    </PEERS>
+    <MODELS>
+        <M ID="0">gen.txt</M>
+<M ID="1">gen.1.txt</M>
+    </MODELS>
+</EVAL>
+<EVAL ID="2">
+    <MODEL-ROOT>/tmp/tmplbmiomzmexg/</MODEL-ROOT>
+    <PEER-ROOT>/tmp/tmplbmiomzmexg/</PEER-ROOT>
+    <INPUT-FORMAT TYPE="SPL">
+    </INPUT-FORMAT>
+    <PEERS>
+        <P ID="A">ref.txt</P>
+    </PEERS>
+    <MODELS>
+        <M ID="0">ref.txt</M>
+    </MODELS>
+</EVAL>
+<EVAL ID="3">
+    <MODEL-ROOT>/tmp/tmplbmiomzmexg/</MODEL-ROOT>
+    <PEER-ROOT>/tmp/tmplbmiomzmexg/</PEER-ROOT>
+    <INPUT-FORMAT TYPE="SPL">
+    </INPUT-FORMAT>
+    <PEERS>
+        <P ID="A">gen1.txt</P>
+    </PEERS>
+    <MODELS>
+        <M ID="0">gen1.txt</M>
+<M ID="1">gen1.1.txt</M>
+    </MODELS>
+</EVAL>
+<EVAL ID="4">
+    <MODEL-ROOT>/tmp/tmplbmiomzmexg/</MODEL-ROOT>
+    <PEER-ROOT>/tmp/tmplbmiomzmexg/</PEER-ROOT>
+    <INPUT-FORMAT TYPE="SPL">
+    </INPUT-FORMAT>
+    <PEERS>
+        <P ID="A">gen.1.txt</P>
+    </PEERS>
+    <MODELS>
+        <M ID="0">gen.1.txt</M>
+    </MODELS>
+</EVAL>
+<EVAL ID="5">
+    <MODEL-ROOT>/tmp/tmplbmiomzmexg/</MODEL-ROOT>
+    <PEER-ROOT>/tmp/tmplbmiomzmexg/</PEER-ROOT>
+    <INPUT-FORMAT TYPE="SPL">
+    </INPUT-FORMAT>
+    <PEERS>
+        <P ID="A">gen1.1.txt</P>
+    </PEERS>
+    <MODELS>
+        <M ID="0">gen1.1.txt</M>
+    </MODELS>
+</EVAL></ROUGE-EVAL>

@@ -1,0 +1,1 @@
+the performance of the model on this binary classification task as evaluated based on the precision , auc , specificity , and accuracy scores is 84.41 % , 80.48 % , 67.32 % , 93.63 % , or 85.08 % . these scores support the conclusion that this model will be highly effective at correctly predicting the true label for several test cases / samples with only a small margin of error .

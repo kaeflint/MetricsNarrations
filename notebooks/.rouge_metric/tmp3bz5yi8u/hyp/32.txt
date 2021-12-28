@@ -1,0 +1,1 @@
+the performance of the model on this binary classification task as evaluated based on the precision , auc , accuracy , and recall are 84.57 % , 96.13 % , 88.13 % and 84.11 % , respectively . these scores support the conclusion that this model will be highly effective at correctly classifying most test cases / samples with only a few misclassification instances .
