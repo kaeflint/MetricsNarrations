@@ -2,7 +2,7 @@
     {
         "task_name": "Phone Case Purchase",
         "id": 129,
-        "narration": "The classifier was able to produce fairly high scores across the metrics sensitivity, accuracy, precision and F1-score. Specifically, for the  sensitivity it scored 87.29%, accuracy (96.67%) and precision (91.3%) with the F1-score equal to 88.89%. These scores suggest that the model will incorrectly assign the wrong labels for only a small number of test cases. Overall, the model's prediction decisions are quite precise and accurate.",
+        "narration": "The classifier was able to produce fairly high scores across metrics sensitivity, accuracy, precision and F1-score. Specifically, for the sensitivity, it scored 87.29%, accuracy (96.67%) and precision (91.3%) with the F1-score equal to 88.89%. These scores suggest that the model will incorrectly assign the wrong labels for only a small number of test cases. Overall, the model's prediction decisions are quite precise and accurate.",
         "metrics_values": "\"{\\\"Accuracy\\\":{\\\"Model A\\\":90.67},\\\"Sensitivity \\\":{\\\"Model A\\\":87.29},\\\"Precision\\\":{\\\"Model A\\\":91.3},\\\"F1-score\\\":{\\\"Model A\\\":88.89}}\"",
         "deleted": false,
         "date_submitted": "19/10/2021",
@@ -22,7 +22,7 @@
     {
         "task_name": "Phone Case Purchase",
         "id": 129,
-        "narration": "For this classification problem, the ML model was evaluated based on its scores across the metrics Accuracy, AUC, Sensitivity, and Precision. The accuracy score is 85.33%, AUC score of 88.32%, sensitivity score of 79.13%, whereas the precision is also equal to 87.33% and F1-score is 81.54%. Judging by the scores attained, it is fair to conclude that this model can distinguish between the test examples from both class labels with a lower chance of misclassification.",
+        "narration": "For this classification problem, the ML model was evaluated based on its scores across the metrics Accuracy, AUC, Sensitivity, and Precision. The accuracy score is 85.33%, AUC score of 88.32%, sensitivity score of 79.13%, whereas the precision is also equal to 87.33% and the F1-score is 81.54%. Judging by the scores attained, it is fair to conclude that this model can distinguish between the test examples from both class labels with a lower chance of misclassification.",
         "metrics_values": "\"{\\\"AUC\\\":{\\\"Model A\\\":88.32},\\\"Sensitivity\\\":{\\\"Model A\\\":79.13},\\\"Accuracy\\\":{\\\"Model A\\\":85.33},\\\"Precision\\\":{\\\"Model A\\\":87.33},\\\"F1-score\\\":{\\\"Model A\\\":81.54}}\"",
         "deleted": false,
         "date_submitted": "19/10/2021",
@@ -1948,7 +1948,7 @@
         "task_name": "Customer Choices",
         "id": 117,
         "narration": "The machine learning model's performance scores on this three-way classification problem under consideration are as follows: it boasts an accuracy score of 76.44%; a recall score of 76.83%; a precision score of 76.81%. Besides, the F1-score is about 76.03%. All these scores suggest that the model is quite good at generating the true labels of different test cases. The prediction performance is shown to be balanced across the three classes(C1, C2, and C3).",
-        "metrics_values": "\"{\\\"Precision\\\":{\\\"Model A\\\":76.81},\\\"F1-score\\\":{\\\"Model A\\\":76.03},\\\"Accuracy\\\":{\\\"Model A\\\":76.44},\\\"Recall\\\":{\\\"Model A\\\":76.83}}\"",
+        "metrics_values": "\"{\\\"F1-score\\\":{\\\"Model A\\\":76.03},\\\"Precision\\\":{\\\"Model A\\\":76.81},\\\"Accuracy\\\":{\\\"Model A\\\":76.44},\\\"Recall\\\":{\\\"Model A\\\":76.83}}\"",
         "deleted": false,
         "date_submitted": "18/10/2021",
         "dataset_info": "<p> Class Labels: <b>C1</b>, <b>C2</b>  and <b>C3</b></p>The dataset is balanced",
