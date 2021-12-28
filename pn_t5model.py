@@ -12,7 +12,7 @@ from src.model_utils import setupTokenizer
 from src.narrations_models import T5NarrationModel
 from src.losses import computeLoss
 
-
+seed_everything(args.seed)
 # Setup the model
 model_generator = T5NarrationModel(
     vocab_size=len(tokenizer_), model_type=args.modeltype,
@@ -162,7 +162,7 @@ def trainNarrator(train_dataset_loader, epochs):
         format_time(time.time()-total_t0)))
 
 
-def generateAndEvaluate(seed=43):
+def generateAndEvaluateyy(seed=43):
     model_generator.generator.eval()
     if model_generator.aux_encoder is not None:
         model_generator.aux_encoder.eval()
@@ -235,6 +235,8 @@ def generateAndEvaluate(seed=43):
 
 output_path = 'TrainedNarrators/P-NarrationsModels/' + \
     args.modeltype+args.output_path+'/'+args.modelbase+'/'
+if args.seed_check:
+    output_path= output_path+f'/{args.seed}/'
 try:
     os.makedirs(output_path)
 except:
@@ -250,14 +252,16 @@ if not args.only_eval:
     model_generator.saveModel(model_path=output_path+'trained_model.pt')
 
     # Perform evaluations
-    results = generateAndEvaluate(seed=args.seed)
+    results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed,sample_too=args.sample_bs)
 
 else:
     print('-- Evaluating Performance --')
     print('-- Please make sure to restore model checkpoint before this step')
+    print(output_path+'trained_model.pt')
     if os.path.exists(output_path+'trained_model.pt'):
         model_generator.loadModel(model_path=output_path+'trained_model.pt')
-        results = generateAndEvaluate(seed=args.seed)
+        results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed,sample_too=args.sample_bs)
+        #results = generateAndEvaluate(seed=args.seed)
     else:
         print('-- Model files not found')
 if len(results) > 0:

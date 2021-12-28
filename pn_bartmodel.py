@@ -31,12 +31,14 @@ model_generator.compile(
 hh= args.modelbase.split('/')[1]
 output_path = 'TrainedNarrators/P-NarrationsModels/' + \
     args.modeltype+args.output_path+'/'+hh+'/'#+'/wr'+str(args.warmup_ratio)+'/'
-print(f'Results will be saved @: {output_path}')
+
+if args.seed_check:
+    output_path= output_path+f'/{args.seed}/'
 try:
     os.makedirs(output_path)
 except:
     pass
-
+print(f'Results will be saved @: {output_path}')
 def baselineTraining(step, batch):
     preamble_tokens = batch['preamble_tokens'].to(device)
     preamble_attention_mask = batch['preamble_attention_mask'].to(device)
@@ -261,7 +263,7 @@ if not args.only_eval:
     model_generator.saveModel(model_path=output_path+'trained_model.pt')
 
     # Perform evaluations
-    results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed)
+    results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed,sample_too=args.sample_bs)
 
 else:
     print('-- Evaluating Performance --')
@@ -269,7 +271,7 @@ else:
     print(output_path+'trained_model.pt')
     if os.path.exists(output_path+'trained_model.pt'):
         model_generator.loadModel(model_path=output_path+'trained_model.pt')
-        results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed)
+        results = generateAndEvaluate(model_generator,test_dataloader,seed=args.seed,sample_too=args.sample_bs)
         #results = generateAndEvaluate(seed=args.seed)
     else:
         print('-- Model files not found')
