@@ -46,7 +46,7 @@ class NarrationModels(object):
         print('Compilation Completed')
 
     def loadModel(self, model_path):
-
+        print(f'loading model from: {model_path}')
         state_dicts = torch.load(model_path)
         self.generator.load_state_dict(state_dicts['generator_state_dict'])
         self.generator.eval()

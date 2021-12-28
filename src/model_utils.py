@@ -32,7 +32,7 @@ def setupTokenizer(modelbase):
         'VALUE_HIGH', 'VALUE_MODERATE', 'VALUE_LOW']  # ['HIGH','MODERATE','LOW']
     # classification_metrics +
     # ,'<acc_diff>',
-    additional_vocab = rates_vocabulary + classes_tokens+['also_known_as', 'ml_task', '<|IMBALANCED|>', '<|BALANCED|>', 'class_labels', 'metric_value', 'metric_rate', 'dataset_attributes', '<|majority_dist|>',
+    additional_vocab = rates_vocabulary + classes_tokens+['also_known_as', 'ml_task','is_imbalanced','is_balanced','data_dist', '<|IMBALANCED|>', '<|BALANCED|>', 'class_labels', 'metric_value', 'metric_rate', 'dataset_attributes', '<|majority_dist|>',
                                                           '<|minority_dist|>', '<rec_diff>', '<preci_diff>', '<acc_diff>']+classification_metrics
     if 't5' in modelbase:
         special_tokens = ['<|>', '&&', '<TaskDec>',

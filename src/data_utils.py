@@ -53,13 +53,17 @@ def getClassLabels(nb_classes):
     return classes
 
 
-def processMetricsInformationDict(metric_scores, metric_rates, augment=False, identicals={}, nb_metrics=6):
+def processMetricsInformationDict(metric_scores, metric_rates, augment=False, reverse_only=False, identicals={}, nb_metrics=6):
     pp = pd.read_json(json.loads(metric_scores))
     metric_rates = json.loads(metric_rates)
-    if augment:
+    if augment and not reverse_only:
         temp_cols = pp.columns.to_list()
         random.shuffle(temp_cols)
         pp = pp[temp_cols]
+    else:
+        if reverse_only:
+            temp_cols = pp.columns.to_list()[::-1]
+            pp = pp[temp_cols]
     metrics = [s.strip() for s in pp.columns.to_list()]
     metric_rates = {s.strip(): v for s, v in metric_rates.items()}
     values = pp.values.tolist()[0]
@@ -97,13 +101,17 @@ def processMetricsInformationDict(metric_scores, metric_rates, augment=False, id
 def normalize_whitespace(string):
     return re.sub(r'(\s)\1{1,}', r'\1', string)
 
-def processMetricsInformation(metric_scores, metric_rates, augment=False, identicals={}):
+def processMetricsInformation(metric_scores, metric_rates, augment=False, reverse_only=False, identicals={}):
     pp = pd.read_json(json.loads(metric_scores))
     metric_rates = json.loads(metric_rates)
-    if augment:
+    if augment and not reverse_only:
         temp_cols = pp.columns.to_list()
         random.shuffle(temp_cols)
         pp = pp[temp_cols]
+    else:
+        if reverse_only:
+            temp_cols = pp.columns.to_list()[::-1]
+            pp = pp[temp_cols]
     metrics = [s.strip() for s in pp.columns.to_list()]
     metric_rates = {s.strip():v for s,v in metric_rates.items()}
     values = pp.values.tolist()[0]
@@ -133,7 +141,7 @@ def processMetricsInformation(metric_scores, metric_rates, augment=False, identi
 
         metrics_info.append(metric_string)
 
-    metrics_score_string = ' <|> '.join(metrics_info)+' '
+    metrics_score_string = ' && '.join(metrics_info)+' '
 
     return '<MetricsInfo> '+metrics_score_string
 
@@ -151,10 +159,10 @@ def processDataSetInformation(flag, datasetInfo):
         else:
             _mclass.append(c)
     if flag == 1:
-        flag = '<|IMBALANCED|>'
+        flag = 'is_imbalanced'
     else:
-        flag = '<|BALANCED|>'
-    b1 = f'ml_task | dataset_attributes | {flag} '
+        flag = 'is_balanced'
+    b1 = f'ml_task | data_dist | {flag} '
 
     class_labels = getClassLabels(len(_mclass))
     classes_string = ', '.join(class_labels[:-1])+' and '+class_labels[-1]
@@ -173,12 +181,13 @@ def linearizeInput(data, identical_metrics={},
                    augnment_metrics=False,
                    augment_output_order=False,
                    no_narration=False,
-                   reverse_output=False
+                   reverse_output=False,
+                   reverse_only=False,
                    ):
     dataset_info = processDataSetInformation(
         data["is_dataset_balanced"], data["dataset_info"])
     metrics_info = processMetricsInformation(
-        data["metrics_values"], data["imetric_score_rate"], identicals=identical_metrics, augment=augnment_metrics)
+        data["metrics_values"], data["imetric_score_rate"], reverse_only=reverse_only, identicals=identical_metrics, augment=augnment_metrics)
     reps = [metrics_info, dataset_info]
     if augment_output_order:
         random.shuffle(reps)
@@ -195,6 +204,7 @@ def composePreambleAndInputs(data, identical_metrics={},
                              augnment_metrics=False,
                              augment_output_order=False,
                              no_narration=False,
+                             reverse_only=False,
                              reverse_output=False,):
 
     preamble = random.choice(preamble_structure)
@@ -215,14 +225,15 @@ def composePreambleAndInputs(data, identical_metrics={},
     classes_string = ', '.join(class_labels[:-1])+' and '+class_labels[-1]
 
     if flag == 1:
-        flag = '<|IMBALANCED|>'
+        flag = 'is_imbalanced'
     else:
-        flag = '<|BALANCED|>'
+        flag = 'is_balanced'
 
     # Parse the metric information
     metrics_info = processMetricsInformationDict(data["metrics_values"],
                                              data["imetric_score_rate"],
                                              identicals=identical_metrics,
+                                             reverse_only=reverse_only,
                                              augment=augnment_metrics)
     m_list = metrics_info['metrics']
     v_list = metrics_info['values']
@@ -240,7 +251,7 @@ def composePreambleAndInputs(data, identical_metrics={},
                                  re.sub('\s+', ' ', ss.strip().replace('\n', ' '))) for ss in [preamble]][0]
 
     preamble, narration = linearizeInput(
-        data, identical_metrics=identicals, augnment_metrics=identical_metrics)
+        data, identical_metrics=identicals, augnment_metrics=identical_metrics,reverse_only=reverse_only)
 
     narration = parseNarrations(data['narration']) if not no_narration else ''
     class_dict = {f'C{i+1}': c for i, c in enumerate(class_labels)}
