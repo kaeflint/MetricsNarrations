@@ -222,7 +222,7 @@
     {
         "task_name": "Music Concert Attendance",
         "id": 99,
-        "narration": "Given the machine learning problem under consideration, the model achieved a high accuracy  score of 90.73% with a corresponding high AUC score of 95.87%. Also, the precision score is 89.13% and the recall/sensitivity score is 90.32%. From the dataset distribution provided, we can conclude that only the precision score and Sensitivity score are important to accurately assess the performance of the model on this ML task. <#> The scores achieved across these metrics are very high which imply that prediction decisions for the majority of the test cases will be correct. The recall and precision score motivate a higher trust in output predictions.",
+        "narration": "Given the machine learning problem under consideration, the model achieved a high accuracy  score of 90.73% with a corresponding high AUC score of 95.87%. Also, the precision score is 89.13% and the recall/sensitivity score is 90.32%. From the dataset distribution provided, we can conclude that only the precision score and Sensitivity score are important to accurately assess the performance of the model on this ML task. The scores achieved across these metrics are very high which imply that prediction decisions for the majority of the test cases will be correct. The recall and precision score motivate a higher trust in output predictions.",
         "metrics_values": "\"{\\\"AUC\\\":{\\\"Model A\\\":95.87},\\\"Sensitivity\\\":{\\\"Model A\\\":90.32},\\\"Accuracy\\\":{\\\"Model A\\\":90.73},\\\"Precision\\\":{\\\"Model A\\\":89.13}}\"",
         "deleted": false,
         "date_submitted": "15/10/2021",
