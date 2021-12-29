@@ -19,7 +19,7 @@ PYTHONPATH=$PYTHONPATH:./
 
 #modeltype=baseline
 #43 128 456 3087 1984
-for sed in 48
+for sed in 48 128 456 3087 1984
 do 
     echo $sed
     for modelbase in facebook/bart-base facebook/bart-large

@@ -31,6 +31,8 @@ parser.add_argument('-sc', '--seed_check', action="store_true")
 parser.add_argument('-output_path', '--output_path', type=str, required=True)
 parser.add_argument('-use_raw', '--use_raw', action="store_true")
 parser.add_argument('-sbs', '--sample_bs', action="store_true")
+parser.add_argument('-org', '--use_original_data', action="store_true",
+                    help="Specifies if the training should performed using the original dataset. Default is using permuated data.")
 
 
 args = parser.parse_args()
@@ -52,7 +54,12 @@ print(f'Learning rate is {learning_rate}')
 
 mle_only = True
 accumulation_steps = args.gradient_accumulation_steps
-processed = pk.load(open('dataset/train_dataset_new.dat', 'rb'))
+if not args.use_original_data:
+    print('Training with permutated dataset')
+    processed = pk.load(open('dataset/train_dataset_new.dat', 'rb'))
+else:
+    print('Training with original dataset')
+    processed = pk.load(open('dataset/train_dataset_org.dat', 'rb'))
 print(len(processed))
 
 test_data = json.load(open('dataset/test set.json'))
@@ -110,7 +117,7 @@ print('{:>5,} training samples'.format(train_size))
 print('{:>5,} validation samples'.format(val_size))
 
 
-def generateAndEvaluate(model_generator, data_loader, seed=43,sample_too=False):
+def generateAndEvaluate(model_generator, data_loader, seed=43, sample_too=False):
     seed = args.seed
     model_generator.generator.eval()
     if model_generator.aux_encoder is not None:
