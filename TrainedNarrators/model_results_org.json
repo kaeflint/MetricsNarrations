@@ -1,1 +1,120 @@
-{"bart_ef": {"bart-base": {"precision": 24.51, "recall": 41.47, "f1": 29.71, "BLEURT": 0.5512959650754928, "BLEU": 28.793534236908705, "METEOR": 35.58880863585654, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}, "bart-large": {"precision": 27.42, "recall": 44.66, "f1": 32.53, "BLEURT": 0.5320489834547042, "BLEU": 21.74710974561443, "METEOR": 33.55075450421236, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}}, "bart_baseline": {"bart-base": {"precision": 25.92, "recall": 43.83, "f1": 31.46, "BLEURT": 0.5629990091323853, "BLEU": 26.90607620475918, "METEOR": 34.89522600463487, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}, "bart-large": {"precision": 28.42, "recall": 42.78, "f1": 32.9, "BLEURT": 0.5440206003189086, "BLEU": 28.029167198308933, "METEOR": 35.54751467388564, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}}, "t5_baseline": {"t5-small": {"precision": 26.69, "recall": 38.71, "f1": 30.7, "BLEURT": 0.5311536395549774, "BLEU": 25.998947363428407, "METEOR": 32.64071527069973, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}, "t5-base": {"precision": 27.22, "recall": 41.04, "f1": 31.7, "BLEURT": 0.555059579372406, "BLEU": 32.83184395954547, "METEOR": 35.81356419546543, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}, "t5-large": {"precision": 27.36, "recall": 44.45, "f1": 32.73, "BLEURT": 0.5567315059900284, "BLEU": 35.11084540758016, "METEOR": 38.37577860192663, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}}, "t5_ef": {"t5-small": {"precision": 25.99, "recall": 36.25, "f1": 29.39, "BLEURT": 0.5368909187316895, "BLEU": 26.69034107927727, "METEOR": 33.34220004153473, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}, "t5-base": {"precision": 25.7, "recall": 39.86, "f1": 30.36, "BLEURT": 0.5510417898893356, "BLEU": 32.59092378296648, "METEOR": 36.802118776039435, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}, "t5-large": {"precision": 27.48, "recall": 43.73, "f1": 32.58, "BLEURT": 0.558366824388504, "BLEU": 27.598169759557017, "METEOR": 34.343867071218234, "rouge1": 0.0, "rouge2": 0.0, "rougeL": 0.0}}}
+{
+    "bart_ef": {
+        "bart-base": {
+            "precision": 24.51,
+            "recall": 41.47,
+            "f1": 29.71,
+            "BLEURT": 0.5512959650754928,
+            "BLEU": 28.793534236908705,
+            "METEOR": 35.58880863585654,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        },
+        "bart-large": {
+            "precision": 27.42,
+            "recall": 44.66,
+            "f1": 32.53,
+            "BLEURT": 0.5320489834547042,
+            "BLEU": 21.74710974561443,
+            "METEOR": 33.55075450421236,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        }
+    },
+    "bart_baseline": {
+        "bart-base": {
+            "precision": 25.92,
+            "recall": 43.83,
+            "f1": 31.46,
+            "BLEURT": 0.5629990091323853,
+            "BLEU": 26.90607620475918,
+            "METEOR": 34.89522600463487,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        },
+        "bart-large": {
+            "precision": 28.42,
+            "recall": 42.78,
+            "f1": 32.9,
+            "BLEURT": 0.5440206003189086,
+            "BLEU": 28.029167198308933,
+            "METEOR": 35.54751467388564,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        }
+    },
+    "t5_baseline": {
+        "t5-small": {
+            "precision": 26.69,
+            "recall": 38.71,
+            "f1": 30.7,
+            "BLEURT": 0.5311536395549774,
+            "BLEU": 25.998947363428407,
+            "METEOR": 32.64071527069973,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        },
+        "t5-base": {
+            "precision": 27.22,
+            "recall": 41.04,
+            "f1": 31.7,
+            "BLEURT": 0.555059579372406,
+            "BLEU": 32.83184395954547,
+            "METEOR": 35.81356419546543,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        },
+        "t5-large": {
+            "precision": 27.36,
+            "recall": 44.45,
+            "f1": 32.73,
+            "BLEURT": 0.5567315059900284,
+            "BLEU": 35.11084540758016,
+            "METEOR": 38.37577860192663,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        }
+    },
+    "t5_ef": {
+        "t5-small": {
+            "precision": 25.99,
+            "recall": 36.25,
+            "f1": 29.39,
+            "BLEURT": 0.5368909187316895,
+            "BLEU": 26.69034107927727,
+            "METEOR": 33.34220004153473,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        },
+        "t5-base": {
+            "precision": 25.7,
+            "recall": 39.86,
+            "f1": 30.36,
+            "BLEURT": 0.5510417898893356,
+            "BLEU": 32.59092378296648,
+            "METEOR": 36.802118776039435,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        },
+        "t5-large": {
+            "precision": 27.48,
+            "recall": 43.73,
+            "f1": 32.58,
+            "BLEURT": 0.558366824388504,
+            "BLEU": 27.598169759557017,
+            "METEOR": 34.343867071218234,
+            "rouge1": 0.0,
+            "rouge2": 0.0,
+            "rougeL": 0.0
+        }
+    }
+}
