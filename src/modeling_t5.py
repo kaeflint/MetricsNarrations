@@ -9,19 +9,11 @@ import torch.nn.functional as F
 from numpy import mod
 from torch.nn import CrossEntropyLoss
 from transformers.modeling_outputs import (
-    BaseModelOutput, BaseModelOutputWithPastAndCrossAttentions, ModelOutput,
-    Seq2SeqLMOutput)
-from transformers.modeling_utils import (PreTrainedModel,
-                                         find_pruneable_heads_and_indices,
-                                         prune_linear_layer)
+    BaseModelOutput, BaseModelOutputWithPastAndCrossAttentions, ModelOutput)
 from transformers.models.t5.modeling_t5 import (T5Attention, T5Block,
-                                                T5DenseReluDense,
-                                                T5EncoderModel,
                                                 T5ForConditionalGeneration,
-                                                T5LayerCrossAttention,
                                                 T5LayerFF, T5LayerNorm,
-                                                T5LayerSelfAttention, T5Model,
-                                                T5PreTrainedModel, T5Stack)
+                                                T5Stack)
 from transformers.utils import logging
 
 from model_utils import RelativeGlobalAttention
@@ -31,15 +23,18 @@ class GatedControl(nn.Module):
     def __init__(self, config):
         super().__init__()
         self.config = copy.deepcopy(config)
-        self.w1= nn.Linear(config.d_model,config.d_model,bias=False)
-        self.w2= nn.Linear(config.d_model,config.d_model,bias=False)
+        self.w1 = nn.Linear(config.d_model, config.d_model, bias=False)
+        self.w2 = nn.Linear(config.d_model, config.d_model, bias=False)
         self.dropout = nn.Dropout(config.dropout_rate)
-    def forward(self,x,y):
+
+    def forward(self, x, y):
         gate = self.dropout(torch.sigmoid(self.w1(x)+self.w2(y)))
         o = gate * x + (1 - gate) * y
         return o
+
+
 class RepresentationHighlight(nn.Module):
-    def __init__(self, config,gate_control=False):
+    def __init__(self, config, gate_control=False):
         super().__init__()
         self.config = copy.deepcopy(config)
         self.EncDecAttention = T5Attention(
@@ -76,14 +71,12 @@ class RepresentationHighlight(nn.Module):
             query_length=query_length,
             output_attentions=output_attentions,
         )
-        layer_output = hidden_states + self.dropout(attention_output[0]) if not self.gate_control else self.gateControl(hidden_states , self.dropout(attention_output[0]))
+        layer_output = hidden_states + self.dropout(attention_output[0]) if not self.gate_control else self.gateControl(
+            hidden_states, self.dropout(attention_output[0]))
         #layer_output = self.FF(layer_output) + hidden_states
         outputs = (layer_output,) + attention_output[1:]
 
         return outputs
-
-
-
 
 
 class EarlyFusionEncoder(T5Stack):
@@ -305,7 +298,8 @@ class LateFusion(T5Stack):
         self.relative_attention_for_table = RelativeGlobalAttention(d_model=config.d_model,
                                                                     num_heads=config.num_heads,
                                                                     max_len=1024, dropout=config.dropout_rate)
-        self.highlight_layer = RepresentationHighlight(self.config,gate_control=False)
+        self.highlight_layer = RepresentationHighlight(
+            self.config, gate_control=False)
 
     def set_input_embeddings(self, new_embeddings):
         self.embed_tokens = new_embeddings
@@ -505,7 +499,8 @@ class HybridFusionEncoder(T5Stack):
                                                                     num_heads=config.num_heads,
                                                                     max_len=1024, dropout=config.dropout_rate)
         # nn.ModuleList([RepresentationHighlight(self.config) for i in range(config.num_layers-self.bottom_k)])
-        self.highlight_layer = RepresentationHighlight(self.config,gate_control=False)
+        self.highlight_layer = RepresentationHighlight(
+            self.config, gate_control=False)
 
     def set_input_embeddings(self, new_embeddings):
         self.embed_tokens = new_embeddings

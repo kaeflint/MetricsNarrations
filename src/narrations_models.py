@@ -2,7 +2,7 @@ import torch
 import copy
 from tqdm import tqdm
 from transformers import (AdamW, BartForConditionalGeneration,
-                          T5ForConditionalGeneration,T5Config,BartConfig,
+                          T5ForConditionalGeneration, T5Config, BartConfig,
                           get_linear_schedule_with_warmup)
 
 from modeling_bart import DataNarrationBart
@@ -14,13 +14,14 @@ device = torch.device("cuda")
 
 
 class NarrationModels(object):
-    def __init__(self, vocab_size, model_type, config) -> None:
+    def __init__(self, vocab_size, model_type, config, share_mpu_sa=False) -> None:
         super().__init__()
         self.vocab_size = vocab_size
         self.model_type = model_type
         self.t5config = config
         self.t5config.bottom_k = 11
         self.aux_encoder = None
+        self.share_mpu_sa = share_mpu_sa
 
         if self.model_type not in ['baseline', 'base', 'eaf', 'earlyfusion', 'latefusion', 'lf', 'hybrid', 'h']:
             print('Invalid model specified')
@@ -36,10 +37,8 @@ class NarrationModels(object):
         if self.aux_encoder is not None:
             parameters = list(set([p for p in self.generator.parameters(
             )]+[p for p in self.aux_encoder.parameters()]))
-        self.optimizer = AdamW([{'params': parameters,
-                                 'lr': lr}, ],
-                               lr=lr, eps=epsilon
-                               )
+        self.optimizer = AdamW(
+            [{'params': parameters, 'lr': lr}, ], lr=lr, eps=epsilon)
         self.scheduler = get_linear_schedule_with_warmup(self.optimizer,
                                                          num_warmup_steps=warmup_steps,
                                                          num_training_steps=total_steps)
@@ -94,7 +93,7 @@ class BartNarrationModel(NarrationModels):
             metric_data, value_data, rate_data).to(device)
         return table_rep
 
-    def __init__(self, vocab_size, model_type, modelbase='facebook/bart-base'):
+    def __init__(self, vocab_size, model_type, modelbase='facebook/bart-base', share_mpu_sa=False):
         self.modelbase = modelbase
         self.bartconfig = copy.deepcopy(BartConfig.from_pretrained(
             self.modelbase,
@@ -105,8 +104,12 @@ class BartNarrationModel(NarrationModels):
         self.bartconfig.dropout_rate = self.bartconfig.dropout
         self.bartconfig.layer_norm_epsilon = 1e-06
         self.bartconfig.feed_forward_proj = self.bartconfig.activation_function
+
         super(BartNarrationModel, self).__init__(
-            vocab_size, model_type, self.bartconfig)
+            vocab_size, model_type, self.bartconfig,
+            share_mpu_sa=share_mpu_sa
+        )
+        self.bartconfig.share_mpu_sa = self.share_mpu_sa
         if model_type in ['baseline', 'base', ]:
             self.bartconfig.modeltype = model_type
             self.buildBaseline()
@@ -141,13 +144,15 @@ class T5NarrationModel(NarrationModels):
             metric_data, value_data, rate_data).to(device)
         return table_rep
 
-    def __init__(self, vocab_size, model_type, modelbase='t5-base'):
+    def __init__(self, vocab_size, model_type, modelbase='t5-base', share_mpu_sa=False):
         self.modelbase = modelbase
         self.t5config = copy.deepcopy(T5Config.from_pretrained(
             self.modelbase,
             output_hidden_states=False))
+
         super(T5NarrationModel, self).__init__(
-            vocab_size, model_type, self.t5config)
+            vocab_size, model_type, self.t5config, share_mpu_sa)
+        self.t5config.share_mpu_sa = self.share_mpu_sa
         if model_type in ['baseline', 'base', ]:
             self.t5config.modeltype = model_type
             self.buildBaseline()
