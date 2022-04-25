@@ -18,6 +18,7 @@ of the model given that evaluation metrics and their corresponding scores are: <
                       '''
                     Describe the overall performance of the model trained to predict <class_string> on this <dataset> dataset. The evaluation metrics score were <metric_string> as shown in the table: 
                     ''']
+import sacrebleu
 def normalize_text(s):
   # pylint: disable=unnecessary-lambda
   tokenize_fn = lambda x: sacrebleu.tokenizers.Tokenizer13a()(x)
@@ -263,6 +264,8 @@ def composePreambleAndInputs(data, identical_metrics={},
     output = {'preamble': preamble, 'classes': class_labels,
               'dataset_attribute': [flag], **metrics_info, 'narration': extended2}
     return output
+
+
 processInputTableAndNarrations = composePreambleAndInputs
 
 def cleanRatingPreamble(preamble):
