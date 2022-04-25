@@ -76,7 +76,7 @@ def baselineTraining(step, batch):
     return batch_loss
 # Training step for the fusion model
 
-
+# Training the MPU based models
 def FusionModelsTraining(step, batch):
     met, rate, val = batch['metrics_seq'].to(
         device), batch['rates'].to(device), batch['values'].to(device)
@@ -89,8 +89,8 @@ def FusionModelsTraining(step, batch):
     preamble_tokens = batch['preamble_tokens'].to(device)
     preamble_attention_mask = batch['preamble_attention_mask'].to(device)
     labels = batch['labels'].to(device)
-    #labels[labels == 0] = -100
-    #labels[labels == -100] = 0
+
+    # Encode the semantic representation of the table containing the metrics
     table_rep = model_generator.performAuxEncoding([met.detach().clone(), met_att.detach().clone()],
                                                    [val.detach().clone(),
                                                     val_att.detach().clone()],
@@ -108,8 +108,8 @@ def FusionModelsTraining(step, batch):
     # Total loss is the info_loss and the LM loss
     #loss = outputs[0].mean()
     loss = computeLoss(outputs[1], labels, rank_alpha=0.7, mle_only=mle_only,
-                       ignore_index=1, padding_idx=1) / accumulation_steps  # .item()
-    batch_loss = loss.item()  # + info_loss
+                       ignore_index=1, padding_idx=1) / accumulation_steps  
+    batch_loss = loss.item()  
     loss.backward()
     if (step+1) % accumulation_steps == 0:             # Wait for several backward steps
         # Now we can do an optimizer step

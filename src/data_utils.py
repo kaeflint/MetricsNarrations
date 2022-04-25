@@ -185,15 +185,12 @@ def linearizeInput(data, identical_metrics={},
                    reverse_output=False,
                    reverse_only=False,
                    ):
-    dataset_info = processDataSetInformation(
-        data["is_dataset_balanced"], data["dataset_info"])
-    metrics_info = processMetricsInformation(
-        data["metrics_values"], data["imetric_score_rate"], reverse_only=reverse_only, identicals=identical_metrics, augment=augnment_metrics)
+    dataset_info = processDataSetInformation(data["is_dataset_balanced"], data["dataset_info"])
+    metrics_info = processMetricsInformation( data["metrics_values"], data["imetric_score_rate"], reverse_only=reverse_only, identicals=identical_metrics, augment=augnment_metrics)
     reps = [metrics_info, dataset_info]
     if augment_output_order:
         random.shuffle(reps)
-    narration = normalize_whitespace(parseNarrations(
-        data['narration'])) if not no_narration else ''
+    narration = normalize_whitespace(parseNarrations(data['narration'])) if not no_narration else ''
 
     if not reverse_output:
         return (' <|section-sep|> '.join(reps)+' <|section-sep|> <|table2text|> ', narration)
@@ -447,7 +444,9 @@ class RDFDataSetForTableStructured(torch.utils.data.Dataset):
         preamble_encoding = self.preamble_tokenizer(data_preamble)
         preamble_tokens = preamble_encoding['input_ids']
         preamble_attention_mask = preamble_encoding['attention_mask']
-        return dict(
+
+        if len(data_target.strip())>2:
+            return dict(
             preamble_tokens=preamble_tokens.flatten(),
             preamble_attention_mask=preamble_attention_mask.flatten(),
             class_labels=class_labels.flatten(),
@@ -461,6 +460,20 @@ class RDFDataSetForTableStructured(torch.utils.data.Dataset):
             rate_attention=rates['attention_mask'].flatten(),
             value_attention=values['attention_mask'].flatten()
         )
+        else:
+            return dict(
+                preamble_tokens=preamble_tokens.flatten(),
+                preamble_attention_mask=preamble_attention_mask.flatten(),
+                class_labels=class_labels.flatten(),
+                data_info=data_info.flatten(),
+                metrics_seq=metrics_seq.flatten(),
+                metrics_attention=metrics_attention.flatten(),
+                values=values['input_ids'].flatten(),
+                rates=rates['input_ids'].flatten(),
+                rate_attention=rates['attention_mask'].flatten(),
+                value_attention=values['attention_mask'].flatten()
+            )
+
 
     def __getitem__(self, idx):
         # print(self.data_pack)

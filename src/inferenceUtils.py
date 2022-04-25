@@ -20,8 +20,8 @@ class PerformanceNarrator:
         self.verbose = verbose
         self.device = device
 
-    def generateNarration(self, example, seed,  max_length=150,
-                          length_penalty=1.6, beam_size=10, return_top_beams=4):
+    def generateNarration(self, example, seed,  max_length=190,
+                          length_penalty=8.6, beam_size=10, return_top_beams=1):
         seed_everything(seed)
 
         device = self.device
@@ -34,8 +34,7 @@ class PerformanceNarrator:
 
         met, rate, val = batch['metrics_seq'].to(
             device), batch['rates'].to(device), batch['values'].to(device)
-        clb, di = batch['class_labels'].to(
-            device), batch['data_info'].to(device)
+        #clb, di = batch['class_labels'].to(device), batch['data_info'].to(device)
         met_att = batch['metrics_attention'].to(device)
         rate_att = batch['rate_attention'].to(device)
         val_att = batch['value_attention'].to(device)
@@ -43,7 +42,7 @@ class PerformanceNarrator:
         preamble_tokens = batch['preamble_tokens'].to(device)
         preamble_attention_mask = batch['preamble_attention_mask'].to(
             device)
-        labels = batch['labels'].to(device)
+        #labels = batch['labels'].to(device)
 
         if self.model.aux_encoder is not None:
             table_rep = self.model.performAuxEncoding(
@@ -55,12 +54,12 @@ class PerformanceNarrator:
                                                                     table_attention_mask=None,
                                                                     num_beams=bs,
                                                                     repetition_penalty=1.5,
-                                                                    length_penalty=8.6,
+                                                                    length_penalty=length_penalty,
                                                                     early_stopping=True,
                                                                     use_cache=True,
-                                                                    max_length=190,
+                                                                    max_length=max_length,
                                                                     no_repeat_ngram_size=2,
-                                                                    num_return_sequences=1,
+                                                                    num_return_sequences=return_top_beams,
                                                                     do_sample=sample_too
                                                                     )
         else:
@@ -73,7 +72,7 @@ class PerformanceNarrator:
                                                                     use_cache=True,
                                                                     max_length=190,
                                                                     no_repeat_ngram_size=2,
-                                                                    num_return_sequences=1,
+                                                                    num_return_sequences=return_top_beams,
                                                                     do_sample=sample_too
                                                                     )
         sentence_output = [self.experiments_dataset.tokenizer.decode(s, skip_special_tokens=True,
